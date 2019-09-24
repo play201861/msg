@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Message;
 
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * 认证中间件
      */
     public function __construct()
     {
@@ -17,12 +15,18 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * 用户家目录
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @param Message $message
+     * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Message $message)
     {
-        return view('home');
+        if (auth()->user()->isAdmin()) {
+            $messages = $message->paginate();
+        } else {
+            $messages = auth()->user()->messages()->paginate();
+        }
+        return view('home', compact('messages'));
     }
 }
