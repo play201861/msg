@@ -44,8 +44,7 @@ class MessageController extends Controller
         $this->authorize($message);
 
         $message->delete();
-        session()->flash('status', '留言已删除');
 
-        return back();
+        return back()->with('status', '留言已删除');
     }
 }
