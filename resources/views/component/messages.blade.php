@@ -1,7 +1,8 @@
 共 {{ $messages->total() }} 条留言
 <ul class="list-group list-group-flush">
     @foreach ($messages as $message)
-    <li class="list-group-item list-group-item-action" onclick="$('[name=reply_id]').val({{ $message->id }});$('[name=content]').attr('placeholder', '> @ {{ $message->user_name }}\n>\n> {{ $message->content }}').focus()">
+    <li class="list-group-item list-group-item-action"
+        onclick="$('[name=reply_id]').val({{ $message->id }});$('[name=content]').attr('placeholder', '> @ {{ $message->user_name }}\n>\n> {{ $message->content }}').focus()">
         <div class="d-flex">
             <div class="flex-grow-1">
                 <div class="text-muted">
