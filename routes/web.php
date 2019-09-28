@@ -17,6 +17,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::apiResource('messages', 'MessageController')->only([
+Route::resource('messages', 'MessageController')->only([
     'store', 'destroy'
 ]);
