@@ -4,7 +4,7 @@
     <li class="list-group-item list-group-item-action"
         onclick="$('[name=reply_id]').val({{ $message->id }});$('[name=content]').attr('placeholder', '> @ {{ $message->user_name }}\n>\n> {{ $message->content }}').focus()">
         <div class="d-flex">
-            <div class="flex-grow-1">
+            <div class="flex-grow-1 text-break">
                 <div class="text-muted">
                     @if (auth()->id() == $message->user_id)
                     <a href="{{ url('/home') }}">你</a>
